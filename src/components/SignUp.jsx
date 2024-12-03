@@ -4,8 +4,20 @@ import { supabase } from "../services/supabase";
 function SignUp() {
   const [formData, setFormData] = useState({ fullName: "", email: "", password: "" })
   const handleChange = (e) => { setFormData({...formData, [e.target.name]: e.target.value}) }
-  const handleSubmit = () => {
-    
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+    try {
+      const { data, error} = await supabase.auth.signUp(
+        {
+          email: formData.email,
+          password: formData.password,
+          data: { full_name: formData.fullName, }
+        }
+      )
+      console.log(data)
+    } catch (error) {
+      console.log(error)
+    }
   }
   console.log(formData)
   return (
@@ -15,7 +27,7 @@ function SignUp() {
           <div>
             <p className="text-center text-2xl py-4">Sign Up</p>
             <form
-            onSubmit={handleSubmit}
+              onSubmit={handleSubmit}
               action=""
               className="w-[400px] grid grid-cols-1 gap-3 mx-auto"
             >
