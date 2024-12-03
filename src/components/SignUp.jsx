@@ -25,7 +25,7 @@ function SignUp() {
       <div className="container h-screen items-center justify-center">
         <div className="h-full w-full flex justify-center items-center">
           <div>
-            <p className="text-center text-2xl py-4">Sign Up</p>
+            <p className="text-center text-2xl py-4">SignUp</p>
             <form
               onSubmit={handleSubmit}
               action=""
@@ -52,7 +52,7 @@ function SignUp() {
               </label>
               <button className="btn w-full">Submit</button>
             </form>
-            <p className="text-center py-4"> Do you have <NavLink className="text-red-800">account</NavLink>?</p>
+            <p className="text-center py-4">Already have an account? <NavLink className="text-red-800">LogIn</NavLink></p>
           </div>
         </div>
       </div>
