@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { supabase } from "../services/supabase";
 function SignUp() {
+  let navigate = useNavigate()
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -16,10 +17,11 @@ function SignUp() {
       const { data, error } = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password,
-        data: { full_name: formData.fullName },
+        options: {data: { full_name: formData.fullName },}
       });
       if (error) throw error;
       console.log(data);
+      navigate('/')
     } catch (error) {
       console.log(error);
     }

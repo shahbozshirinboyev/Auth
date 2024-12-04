@@ -31,7 +31,7 @@ function App() {
       children: [
         {
           index: true,
-          element: token ? <HomePage /> : <LogIn setToken={setToken} />,
+          element: token ? <HomePage token={token} /> : <LogIn setToken={setToken} />,
         },
         {
           path: "/signup",
@@ -39,7 +39,7 @@ function App() {
         },
         {
           path: "/homepage",
-          element: token ? <HomePage /> : <LogIn setToken={setToken} />,
+          element: token ? <HomePage token={token} /> : <LogIn setToken={setToken} />,
         },
       ],
     },

@@ -1,9 +1,9 @@
-import React from 'react'
-
-function HomePage() {
+function HomePage({ token }) {
   return (
-    <div>HomePage</div>
-  )
+    <div>
+      <p className="text-center py-4">Welcome back, {token.user.user_metadata.full_name}</p>
+    </div>
+  );
 }
 
-export default HomePage
+export default HomePage;
