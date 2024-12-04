@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { supabase } from "../services/supabase";
-function LogIn() {
+function LogIn({setToken}) {
+  let navigate = useNavigate()
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -18,6 +19,8 @@ function LogIn() {
       });
       if (error) throw error;
       console.log(data);
+      setToken(data)
+      navigate('/homepage')
     } catch (error) {
       console.log(error);
     }
